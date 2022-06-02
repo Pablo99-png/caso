@@ -108,6 +108,7 @@ body{
 .barraSuperiore{
     height: 80px;
     width: 100%;
+    min-width: 850px;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
     background-color: var(--colore2);
@@ -115,6 +116,7 @@ body{
     z-index: 1000;
     display: flex;
     flex-direction: row;
+    
 }
 .barraSuperioreScrolled{
     width: calc(100% - 400px);
@@ -165,16 +167,21 @@ body{
         height: 80vh;
         flex-direction: column;
         gap: 0px;
+        overflow-y: scroll;
+        border-radius: 0%;
+        
     }
     html .menu1SX, html .menu1DX{
         height: 100%;
         width: 100%;
-        border-radius: 0px;
+        border-radius: 0px !important;
 
     }
     html .menu1SX{
-        border-bottom: 1px white solid;
+        /* border-bottom: 1px white solid; */
+        
     }
+
     html .restoPag{
         border-radius: 0px;
         margin-left: 0%;
@@ -192,8 +199,20 @@ body{
         min-height: 100px;
         width: 100%;
         display: flex;
-        padding: 20px;
+        padding: 10px;
         
+    }
+    html .elementoVerticale{
+        height:fit-content;
+        width: fit-content;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 20px;
+        transform: rotate(90deg);
+        color: var(--coloreChiaro);
+        text-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        cursor: pointer;
+    
     }
   }
 
@@ -300,6 +319,7 @@ body{
     opacity: 1;
     margin-right: -100vw;
     opacity: 0;
+    min-width: 850px;
 }
 
 
@@ -315,4 +335,22 @@ body{
     background-color: var(--colore2);
     border-radius: 20px;
     
+}
+.menu1DX, .menu1SX{
+    padding: 20px;
+    color: white;
+}
+.titoloMenu{
+    margin: 0px;
+}
+.boxMenu{
+    border-bottom: 1px white solid;
+}
+.boxCategorie{
+    height: auto;
+    width: 100%;
+}
+.categoriaMenu{
+    font-weight: 200;
+    font-size: 15px;
 }

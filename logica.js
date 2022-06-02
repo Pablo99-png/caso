@@ -10,7 +10,7 @@ let restoPag = document.querySelector('.restoPag');
 let menu1 = document.querySelector('.menu1Effettivo');
 let barraWrapper = document.querySelector('.barraWrapper');
 let apriBarraLaterale = document.querySelector('.apriBarraLaterale');
-
+let body = document.querySelector('body');
 
 function apriBarraLat(){
     if(barraLat.classList.contains('barraLatAperta')) return;
@@ -54,14 +54,15 @@ barraLat.addEventListener('mouseleave',chiudiBarraLat);
 
 for(let i = 0; i < elementoGenericoBarraLaterale.length; i++){
     elementoGenericoBarraLaterale[i].addEventListener('mouseenter',function (){
-        this.style.height = '30%';
-        let s = elementoAncoraPiuInternoEXP[i].classList.remove('nascondiElemento');
+        this.style.minHeight = '40%';
+        elementoAncoraPiuInternoEXP[i].classList.remove('nascondiElemento');
         elementoAncoraPiuInterno[i].classList.toggle('nascondiElemento');
     });
 }
+
 for(let i = 0; i < elementoGenericoBarraLaterale.length; i++){
     elementoGenericoBarraLaterale[i].addEventListener('mouseleave',function (){
-        this.style.height = '80px';
+        this.style.minHeight = '80px';
         elementoAncoraPiuInternoEXP[i].classList.toggle('nascondiElemento');
         elementoAncoraPiuInterno[i].classList.remove('nascondiElemento');
     });
@@ -89,7 +90,7 @@ window.addEventListener('scroll',function (e){
     if(this.scrollY > 80 && scrolled == false){
         barraSuperiore.classList.toggle('barraSuperioreScrolled');
         scrolled = true;
-        menu1.style.width = 'calc(100% - 400px)';
+        if(screen.width > 950) menu1.style.width = 'calc(100% - 400px)';
     }else if(this.scrollY < 80 ){
         barraSuperiore.classList.remove('barraSuperioreScrolled');
         scrolled = false;
@@ -118,11 +119,13 @@ window.addEventListener('scroll',function (e){
 let aperto = false;
 menu1Button.addEventListener('click',function (){
     if(aperto == false){
-        if(window.scrollY == 0) restoPag.style.marginTop = '420px';
+        if(window.scrollY == 0 && screen.width > 950) restoPag.style.marginTop = '420px';
+        if(screen.width < 950) body.style.overflow = 'hidden';
         menu1.style.marginLeft = '';
         menu1.style.opacity = 1;
         aperto = true;
     }else{
+        if(screen.width < 950 || body.style.overflow == 'hidden') body.style.overflow = 'scroll';
         restoPag.style.marginTop = '100px';
         menu1.style.marginLeft = '100%';
         menu1.style.opacity = 0;

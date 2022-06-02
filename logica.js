@@ -13,7 +13,9 @@ let apriBarraLaterale = document.querySelector('.apriBarraLaterale');
 
 
 function apriBarraLat(){
-    barraLat.style.width = '300px';
+    if(barraLat.classList.contains('barraLatAperta')) return;
+    barraLat.classList.toggle('barraLatAperta');
+
     for(let i = 0; i < elementiInterni.length; i++){
         elementiInterni[i].style.width = '80%';
     }
@@ -28,8 +30,10 @@ function apriBarraLat(){
 }
 
 barraLat.addEventListener('mouseenter',apriBarraLat);
-function chiudiBarraLat(){
-    barraLat.style.width = '80px';
+function chiudiBarraLat(a){
+    if(!barraLat.classList.contains('barraLatAperta')) return;
+    if(a != 1 && screen.width < 950) return;
+    barraLat.classList.remove('barraLatAperta');
     for(let i = 0; i < elementiInterni.length; i++){
         elementiInterni[i].style.width = '100%';
     }
@@ -139,6 +143,6 @@ apriBarraLaterale.addEventListener('click',function (){
         apriBarraLat(); 
     }else{
         barraLat.classList.toggle('barraSupChiusaPhone');
-        chiudiBarraLat(); 
+        chiudiBarraLat(1); 
     }
 });
